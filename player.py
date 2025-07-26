@@ -3,7 +3,7 @@ from constants import *
 
 class Player(CircleShape):
     def __init__(self, x, y):
-        super().__init__(PLAYER_RADIUS)
+        super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
 
     def triangle(self):
@@ -13,3 +13,7 @@ class Player(CircleShape):
         b = self.position - forward * self.radius - right
         c = self.position - forward * self.radius + right
         return [a, b, c]    
+
+    def draw(self, screen):
+        #pygame.draw.circle(screen, "red", self.position, self.radius)
+        pygame.draw.polygon(screen, (255, 255, 255), self.triangle(), 2)
